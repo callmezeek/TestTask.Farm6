@@ -1,0 +1,101 @@
+﻿@model TestTask.Farm6.Models.Farm
+@using TestTask.Farm6.Resources
+@using TestTask.Farm6.Constants
+@using System.Configuration
+
+@{
+    ViewBag.Title = Forms.FormCreate;
+}
+
+<h2>@Forms.FormCreate</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Farmer, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Farmer, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Farmer, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Kultur, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Kultur, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Kultur, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LastYearHarvest, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.LastYearHarvest, new { htmlAttributes = new Dictionary<string, object> { { "class", "form-control" }, { "data-val-number", string.Format(Messages.FieldMustBeNumeric, Models.Farm_LastYearHarvest) } } })
+                        @Html.ValidationMessageFor(model => model.LastYearHarvest, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Area, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Area, new { htmlAttributes = new Dictionary<string, object> { { "class", "form-control" }, { "data-val-number", string.Format(Messages.FieldMustBeNumeric, Models.Farm_Area) } } })
+                        @Html.ValidationMessageFor(model => model.Area, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Region, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Region, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Region, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div id="map" class="map"></div>
+                <div class="hidden">
+                    @Html.EditorFor(model => model.GisX)
+                    @Html.EditorFor(model => model.GisY)
+                    @Html.Hidden(CDb.MapDefaultCoords, ConfigurationManager.AppSettings[CDb.MapDefaultCoords])
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-8">
+                <button type="submit" value="Create" class="btn btn-default farm-btn" title="@Forms.FormCreateCreate">
+                    <i class="glyphicon glyphicon-plus"></i>@Forms.FormCreateCreate
+                </button>
+                <a href='@Url.Action("Index", "Farm")' class="btn btn-default farm-btn" title='@Forms.FormBackToList'>
+                    <i class="glyphicon glyphicon-log-out"></i>@Forms.FormBackToList
+                </a>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/ol")
+    @Scripts.Render("~/Scripts/Views/Farm/edit.js")
+}
+
+@section Styles {
+    @Styles.Render("~/Content/ol")
+}

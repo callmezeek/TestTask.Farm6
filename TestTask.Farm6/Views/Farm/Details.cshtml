@@ -1,0 +1,71 @@
+﻿@model TestTask.Farm6.Models.Farm
+@using TestTask.Farm6.Resources
+
+@{
+    ViewBag.Title = Forms.FormDetails;
+}
+
+<h2>@Forms.FormDetails</h2>
+
+<div>
+    <h4>@Models.Farm</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Farmer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Farmer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kultur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kultur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastYearHarvest)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastYearHarvest)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Area)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Area)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Region)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Region)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href='@Url.Action("Edit", "Farm")' class="btn btn-default farm-btn" title='@Forms.ListEdit'>
+        <i class="glyphicon glyphicon-edit"></i>@Forms.ListEdit
+    </a>
+    <a href='@Url.Action("Index", "Farm")' class="btn btn-default farm-btn" title='@Forms.FormBackToList'>
+        <i class="glyphicon glyphicon-log-out"></i>@Forms.FormBackToList
+    </a>
+</p>

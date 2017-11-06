@@ -1,0 +1,72 @@
+﻿@model IEnumerable<TestTask.Farm6.Models.Farm>
+@using TestTask.Farm6.Resources;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2></h2>
+
+<p>
+    <a href='@Url.Action("Create", "Farm")' class="btn btn-default farm-btn" title='@Forms.ListCreate'>
+        <i class="glyphicon glyphicon-plus"></i>@Forms.ListCreate
+    </a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Farmer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kultur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastYearHarvest)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Area)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Region)
+        </th>
+        <th class="list-operations-column-header"></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Farmer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kultur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastYearHarvest)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Area)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Region)
+        </td>
+        <td>
+            <a href='@Url.Action("Edit", "Farm", new { id=item.Id })' class="btn btn-default" title = '@Forms.ListEdit'>
+                <i class="glyphicon glyphicon-edit"></i>
+            </a>
+            <a href='@Url.Action("Details", "Farm", new { id=item.Id })' class="btn btn-default" title='@Forms.ListDetails'>
+                <i class="glyphicon glyphicon-expand"></i>
+            </a>
+            <a href='@Url.Action("Delete", "Farm", new { id=item.Id })' class="btn btn-default" title='@Forms.ListDelete'>
+                <i class="glyphicon glyphicon-trash"></i>
+            </a>
+        </td>
+    </tr>
+}
+
+</table>

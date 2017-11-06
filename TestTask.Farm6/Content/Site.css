@@ -1,0 +1,81 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.select-coords {
+    left: 0.5em;
+    top: 4.5em;
+}
+
+    .select-coords > button > i {
+        font-size: 0.9em;
+        margin-bottom: 4px;
+    }
+
+.map-marker-with-icon-and-text {
+    position: relative;
+}
+
+    .map-marker-with-icon-and-text > img {
+        width: 32px;
+        height: 32px;
+        position: absolute;
+    }
+
+    .map-marker-with-icon-and-text > div {
+        color: black;
+        background: white;
+        border-radius: 0 10px 10px 10px;
+        padding: 3px 14px 3px 18px;
+        position: absolute;
+        left: 16px;
+        white-space: nowrap;
+    }
+
+.farm-btn {
+
+}
+
+.list-operations-column-header {
+    width: 144px;
+}
+
+.map-marker-img {
+    opacity: 0.9;
+    width: 32px;
+    height: 42px;
+    cursor: pointer;
+}
+
+.popover-content dd[id^="Farm-"] {
+    width: 250px;
+}
+
+#map .popover {
+    max-width: 500px;
+}
+
+.farm-btn > i:before {
+    margin-right: 5px;
+}

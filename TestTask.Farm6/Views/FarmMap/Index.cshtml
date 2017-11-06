@@ -1,0 +1,88 @@
+﻿@model IEnumerable<TestTask.Farm6.Models.Farm>
+@using TestTask.Farm6.Models
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@{
+    var ids = new[] {
+        $"{nameof(Farm)}-{nameof(Farm.Farmer)}",
+        $"{nameof(Farm)}-{nameof(Farm.Name)}",
+        $"{nameof(Farm)}-{nameof(Farm.Kultur)}",
+        $"{nameof(Farm)}-{nameof(Farm.LastYearHarvest)}",
+        $"{nameof(Farm)}-{nameof(Farm.Area)}",
+        $"{nameof(Farm)}-{nameof(Farm.Region)}"
+    };
+
+    var data = new
+    {
+        Ids = ids,
+        Models = Model.ToList()
+    };
+
+    var jsonData = Json.Encode(data);
+}
+
+<div class="form-horizontal">
+    <div class="row">
+        @Html.Hidden("MapData", jsonData)
+        <div class="hidden">
+            <div id="map-marker-popover">
+                <dl class="dl-horizontal">
+                    <dt>@Html.DisplayNameFor(model => model.Farmer)</dt>
+                    <dd id="@nameof(Farm)-@nameof(Farm.Farmer)"></dd>
+                    <dt>@Html.DisplayNameFor(model => model.Name)</dt>
+                    <dd id="@nameof(Farm)-@nameof(Farm.Name)"></dd>
+                    <dt>@Html.DisplayNameFor(model => model.Kultur)</dt>
+                    <dd id="@nameof(Farm)-@nameof(Farm.Kultur)"></dd>
+                    <dt>@Html.DisplayNameFor(model => model.LastYearHarvest)</dt>
+                    <dd id="@nameof(Farm)-@nameof(Farm.LastYearHarvest)"></dd>
+                    <dt>@Html.DisplayNameFor(model => model.Area)</dt>
+                    <dd id="@nameof(Farm)-@nameof(Farm.Area)"></dd>
+                    <dt>@Html.DisplayNameFor(model => model.Region)</dt>
+                    <dd id="@nameof(Farm)-@nameof(Farm.Region)"></dd>
+                </dl>
+                <!--
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <label>@Html.DisplayNameFor(model => model.Farmer)</label>
+                        <div id="@nameof(Farm)-@nameof(Farm.Farmer)"></div>
+                    </li>
+                    <li class="list-group-item">
+                        <label>@Html.DisplayNameFor(model => model.Name)</label>
+                        <div id="@nameof(Farm)-@nameof(Farm.Name)"></div>
+                    </li>
+                    <li class="list-group-item">
+                        <label>@Html.DisplayNameFor(model => model.Kultur)</label>
+                        <div id="@nameof(Farm)-@nameof(Farm.Kultur)"></div>
+                    </li>
+                    <li class="list-group-item">
+                        <label>@Html.DisplayNameFor(model => model.LastYearHarvest)</label>
+                        <div id="@nameof(Farm)-@nameof(Farm.LastYearHarvest)"></div>
+                    </li>
+                    <li class="list-group-item">
+                        <label>@Html.DisplayNameFor(model => model.Area)</label>
+                        <div id="@nameof(Farm)-@nameof(Farm.Area)"></div>
+                    </li>
+                    <li class="list-group-item">
+                        <label>@Html.DisplayNameFor(model => model.Region)</label>
+                        <div id="@nameof(Farm)-@nameof(Farm.Region)"></div>
+                    </li>
+                </ul>
+                    -->
+            </div>
+        </div>
+        <div id="map" class="map"></div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/ol")
+    @Scripts.Render("~/Scripts/Views/Farm/list.js")
+}
+
+@section Styles {
+    @Styles.Render("~/Content/ol")
+}
