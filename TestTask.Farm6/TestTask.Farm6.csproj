@@ -179,6 +179,7 @@
       <DependentUpon>Models.resx</DependentUpon>
     </Compile>
     <Compile Include="Store\AppDbContext.cs" />
+    <Compile Include="Store\AppDbInitializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
